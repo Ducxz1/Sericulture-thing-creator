@@ -73,7 +73,7 @@
         const qText = document.getElementById('quirkText').value;
         const outputDiv = document.getElementById('output');
         
-        outputDiv.innerHTML = `<span class="title">GOAL:</span>\n${gText}\n\n<span class="title">QUIRKS:</span>\n• ${qText}`;
+        outputDiv.innerHTML = `<span class="title">GOAL:</span>\n${gText}\n\n<span class="title">QUIRKS:</span>\n${qText.split('\n').map(line => `• ${line}`).join('\n')}`;
         
         html2canvas(outputDiv).then(canvas => {
             capturedCanvas = canvas;
