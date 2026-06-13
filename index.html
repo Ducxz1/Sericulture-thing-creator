@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Objective Generator</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #4cd94c;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        textarea {
+            width: 100%;
+            background: #111;
+            color: #4cd94c;
+            border: 1px solid #4cd94c;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: inherit;
+            display: block;
+        }
+        button {
+            background: #4cd94c;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        #output {
+            margin-top: 30px;
+            padding: 20px;
+            /* Background image from static folder */
+            background-image: url('{{ url_for('static', filename='background.png') }}');
+            background-repeat: repeat; 
+            border: 1px solid #222;
+            min-height: 100px;
+            white-space: pre-wrap;
+        }
+        .title { font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Objective Generator</h2>
+    <textarea id="goalText" placeholder="Enter goal description..."></textarea>
+    <textarea id="quirkText" placeholder="Enter quirk description..."></textarea>
+    <button onclick="generate()">Generate Display</button>
+
+    <div id="output"></div>
+</div>
+
+<script>
+    function generate() {
+        const gText = document.getElementById('goalText').value;
+        const qText = document.getElementById('quirkText').value;
+
+        const output = `<span class="title">GOAL:</span>\n${gText}\n\n<span class="title">QUIRKS:</span>\n• ${qText}`;
+        document.getElementById('output').innerHTML = output;
+    }
+</script>
+
+</body>
+</html>
