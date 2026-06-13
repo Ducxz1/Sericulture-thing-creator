@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.dataset.clicks = "0";
                 const newPet = document.createElement('img');
                 newPet.src = 'static/Gwarek.png';
+                newPet.style.position = 'fixed';
+                newPet.style.width = '50px';
                 newPet.style.left = this.style.left;
                 newPet.style.top = this.style.top;
                 document.body.appendChild(newPet);
