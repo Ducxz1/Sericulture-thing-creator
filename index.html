@@ -2,13 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Objective Generator</title>
+    <title>Sericulture Thing Creator</title>
     <style>
-        body { background-color: #000; color: #4cd94c; font-family: 'Courier New', Courier, monospace; padding: 20px; overflow-x: hidden; }
+        @font-face {
+            font-family: 'TerminalFont';
+            src: url('static/font.woff2') format('woff2');
+        }
+        body { 
+            background-color: #000; 
+            color: #4cd94c; 
+            font-family: 'TerminalFont', 'Courier New', Courier, monospace; 
+            padding: 20px; 
+            overflow-x: hidden; 
+        }
         .container { max-width: 800px; margin: auto; }
-        textarea { width: 100%; background: #111; color: #4cd94c; border: 1px solid #4cd94c; padding: 10px; margin: 10px 0; font-family: inherit; display: block; }
-        button { background: #4cd94c; color: #000; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; }
-        #output { margin-top: 30px; padding: 20px; background-image: url('static/Bzzzzzzzz.png'); background-repeat: repeat; border: 1px solid #222; min-height: 100px; white-space: pre-wrap; }
+        textarea { 
+            width: 100%; 
+            background: #111; 
+            color: #4cd94c; 
+            border: 1px solid #4cd94c; 
+            padding: 10px; 
+            margin: 10px 0; 
+            font-family: inherit; 
+            display: block; 
+        }
+        button { 
+            background: #4cd94c; 
+            color: #000; 
+            border: none; 
+            padding: 10px 20px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            font-family: inherit;
+        }
+        #output { 
+            margin-top: 30px; 
+            padding: 20px; 
+            background-image: url('static/Bzzzzzzzz.png'); 
+            background-repeat: repeat; 
+            border: 1px solid #222; 
+            min-height: 100px; 
+            white-space: pre-wrap; 
+        }
         .title { font-weight: bold; }
         #pet { position: fixed; width: 50px; transition: all 0.5s ease; z-index: 1000; }
     </style>
@@ -16,10 +51,10 @@
 <body>
 
 <div class="container">
-    <h2>Objective Generator</h2>
+    <h2>Sericulture Thing Creator</h2>
     <textarea id="goalText" placeholder="Enter goal description..."></textarea>
     <textarea id="quirkText" placeholder="Enter quirk description..."></textarea>
-    <button onclick="generate()">Generate Display</button>
+    <button onclick="generate()">Cook up my thing!</button>
     <div id="output"></div>
 </div>
 
