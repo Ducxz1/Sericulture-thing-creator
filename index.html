@@ -35,6 +35,7 @@
             cursor: pointer; 
             font-weight: bold; 
             font-family: inherit;
+            margin-right: 10px;
         }
         #output { 
             margin-top: 30px; 
@@ -48,6 +49,7 @@
         }
         .title { font-weight: bold; }
         #pet { position: fixed; width: 50px; transition: all 0.5s ease; z-index: 1000; }
+        #copyBtn { display: none; background: #9bcc66; color: #000; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; font-family: inherit; }
     </style>
 </head>
 <body>
@@ -56,14 +58,17 @@
     <h2>Sericulture Thing Creator</h2>
     <textarea id="goalText" placeholder="Enter goal description..."></textarea>
     <textarea id="quirkText" placeholder="Enter quirk description..."></textarea>
-    <button onclick="generateAndCapture()">Cook up my thing!</button>
+    <button onclick="generate()">Cook up my thing!</button>
+    <button id="copyBtn" onclick="copyImage()">Copy image</button>
     <div id="output"></div>
 </div>
 
 <img id="pet" src="static/Gwarek.png" alt="Pet">
 
 <script>
-    function generateAndCapture() {
+    let capturedCanvas = null;
+
+    function generate() {
         const gText = document.getElementById('goalText').value;
         const qText = document.getElementById('quirkText').value;
         const outputDiv = document.getElementById('output');
@@ -71,11 +76,19 @@
         outputDiv.innerHTML = `<span class="title">GOAL:</span>\n${gText}\n\n<span class="title">QUIRKS:</span>\n• ${qText}`;
         
         html2canvas(outputDiv).then(canvas => {
-            const link = document.createElement('a');
-            link.download = 'my-thing.png';
-            link.href = canvas.toDataURL();
-            link.click();
+            capturedCanvas = canvas;
+            document.getElementById('copyBtn').style.display = 'inline-block';
         });
+    }
+
+    function copyImage() {
+        if (capturedCanvas) {
+            capturedCanvas.toBlob(blob => {
+                const item = new ClipboardItem({ "image/png": blob });
+                navigator.clipboard.write([item]);
+                alert("Image copied to clipboard!");
+            });
+        }
     }
 </script>
 <script src="Gwarek.js"></script>
