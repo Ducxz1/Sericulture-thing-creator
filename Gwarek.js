@@ -1,5 +1,6 @@
 const pet = document.getElementById('pet');
-let x = 0, y = 0;
+let x = 0;
+let y = 0;
 
 function movePet() {
     x = Math.random() * (window.innerWidth - 50);
@@ -10,8 +11,7 @@ function movePet() {
 
 setInterval(movePet, 2000);
 
-// Duplication logic
-pet.addEventListener('click', function() {
+function createNewPet() {
     const newPet = document.createElement('img');
     newPet.src = 'static/Gwarek.png';
     newPet.style.position = 'fixed';
@@ -19,5 +19,11 @@ pet.addEventListener('click', function() {
     newPet.style.left = pet.style.left;
     newPet.style.top = pet.style.top;
     newPet.style.zIndex = '1000';
+    newPet.style.transition = 'all 0.5s ease';
+    
+    newPet.addEventListener('click', createNewPet);
+    
     document.body.appendChild(newPet);
-});
+}
+
+pet.addEventListener('click', createNewPet);
