@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Sericulture Thing Creator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         @font-face {
             font-family: 'TerminalFont';
@@ -10,26 +11,24 @@
         }
         body { 
             background-color: #000; 
-            color: #4cd94c; 
+            color: #9bcc66; 
             font-family: 'TerminalFont', 'Courier New', Courier, monospace; 
             padding: 20px; 
             overflow-x: hidden;
-            text-shadow: none;
         }
         .container { max-width: 800px; margin: auto; }
         textarea { 
             width: 100%; 
             background: #111; 
-            color: #4cd94c; 
-            border: 1px solid #4cd94c; 
+            color: #9bcc66; 
+            border: 1px solid #9bcc66; 
             padding: 10px; 
             margin: 10px 0; 
             font-family: inherit; 
             display: block;
-            text-shadow: none;
         }
         button { 
-            background: #4cd94c; 
+            background: #9bcc66; 
             color: #000; 
             border: none; 
             padding: 10px 20px; 
@@ -45,6 +44,7 @@
             border: 1px solid #222; 
             min-height: 100px; 
             white-space: pre-wrap; 
+            color: #9bcc66;
         }
         .title { font-weight: bold; }
         #pet { position: fixed; width: 50px; transition: all 0.5s ease; z-index: 1000; }
@@ -56,18 +56,26 @@
     <h2>Sericulture Thing Creator</h2>
     <textarea id="goalText" placeholder="Enter goal description..."></textarea>
     <textarea id="quirkText" placeholder="Enter quirk description..."></textarea>
-    <button onclick="generate()">Cook up my thing!</button>
+    <button onclick="generateAndCapture()">Cook up my thing!</button>
     <div id="output"></div>
 </div>
 
 <img id="pet" src="static/Gwarek.png" alt="Pet">
 
 <script>
-    function generate() {
+    function generateAndCapture() {
         const gText = document.getElementById('goalText').value;
         const qText = document.getElementById('quirkText').value;
-        const output = `<span class="title">GOAL:</span>\n${gText}\n\n<span class="title">QUIRKS:</span>\n• ${qText}`;
-        document.getElementById('output').innerHTML = output;
+        const outputDiv = document.getElementById('output');
+        
+        outputDiv.innerHTML = `<span class="title">GOAL:</span>\n${gText}\n\n<span class="title">QUIRKS:</span>\n• ${qText}`;
+        
+        html2canvas(outputDiv).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'my-thing.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        });
     }
 </script>
 <script src="Gwarek.js"></script>
