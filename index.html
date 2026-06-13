@@ -4,53 +4,13 @@
     <meta charset="UTF-8">
     <title>Objective Generator</title>
     <style>
-        body {
-            background-color: #000;
-            color: #4cd94c;
-            font-family: 'Courier New', Courier, monospace;
-            padding: 20px;
-            overflow-x: hidden;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-        }
-        textarea {
-            width: 100%;
-            background: #111;
-            color: #4cd94c;
-            border: 1px solid #4cd94c;
-            padding: 10px;
-            margin: 10px 0;
-            font-family: inherit;
-            display: block;
-        }
-        button {
-            background: #4cd94c;
-            color: #000;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        #output {
-            margin-top: 30px;
-            padding: 20px;
-            background-image: url('static/Bzzzzzzzz.png');
-            background-repeat: repeat; 
-            border: 1px solid #222;
-            min-height: 100px;
-            white-space: pre-wrap;
-        }
+        body { background-color: #000; color: #4cd94c; font-family: 'Courier New', Courier, monospace; padding: 20px; overflow-x: hidden; }
+        .container { max-width: 800px; margin: auto; }
+        textarea { width: 100%; background: #111; color: #4cd94c; border: 1px solid #4cd94c; padding: 10px; margin: 10px 0; font-family: inherit; display: block; }
+        button { background: #4cd94c; color: #000; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; }
+        #output { margin-top: 30px; padding: 20px; background-image: url('static/Bzzzzzzzz.png'); background-repeat: repeat; border: 1px solid #222; min-height: 100px; white-space: pre-wrap; }
         .title { font-weight: bold; }
-        
-        /* Pet styling */
-        #pet {
-            position: fixed;
-            width: 50px;
-            transition: all 0.5s ease;
-            z-index: 1000;
-        }
+        #pet { position: fixed; width: 50px; transition: all 0.5s ease; z-index: 1000; }
     </style>
 </head>
 <body>
@@ -60,7 +20,6 @@
     <textarea id="goalText" placeholder="Enter goal description..."></textarea>
     <textarea id="quirkText" placeholder="Enter quirk description..."></textarea>
     <button onclick="generate()">Generate Display</button>
-
     <div id="output"></div>
 </div>
 
@@ -73,20 +32,8 @@
         const output = `<span class="title">GOAL:</span>\n${gText}\n\n<span class="title">QUIRKS:</span>\n• ${qText}`;
         document.getElementById('output').innerHTML = output;
     }
-
-    // Pet movement logic
-    const pet = document.getElementById('pet');
-    let x = 0, y = 0;
-
-    function movePet() {
-        x = Math.random() * (window.innerWidth - 50);
-        y = Math.random() * (window.innerHeight - 50);
-        pet.style.left = x + 'px';
-        pet.style.top = y + 'px';
-    }
-
-    setInterval(movePet, 2000); // Jumps every 2 seconds
 </script>
+<script src="script.js"></script>
 
 </body>
 </html>
